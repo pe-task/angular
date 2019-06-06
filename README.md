@@ -29,8 +29,8 @@ Don't forget to add some spinner, animations,  etc.
 
 **4. From architecture side**
 - Run the project and check how it works: 
--- Check http requests
--- Check the behavior of the user list and pagination. 
+1. Check http requests
+2. Check the behavior of the user list and pagination. 
 
 Potentially it has bugs. Refactoring is a possibility, fixing bugs as well.
 At the end we would like to see that your code **works correct** and that **code is correct itself**.
