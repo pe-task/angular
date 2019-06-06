@@ -1,5 +1,7 @@
 # Angular Test Task
-The main goal of the task is to show your skills in the best way possible. Please investigate the project, follow the steps below and improve the code accordingly.
+The main goal of the task is to show your skills in the best way possible.
+Think of you starting to work on a new project that has many issues and bad code. Your task is make it to work and make the code perfect!
+Please investigate the project, follow the steps below and improve the code accordingly.
 You have **2 hours maximum** to complete the tasks.
 
 1. Check the Angular project provided to you. The project is a simple user management system. It has 2 views: Users List and User Card. The card can be opened from List, where it fetches data from a remote API. The users list has pagination and every page fetches data from this API.
