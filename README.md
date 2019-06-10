@@ -47,7 +47,7 @@ At the end we would like to see that your code **works correct** and that **code
 - System don’t do twice requests
 - Pagination in users list works as expected
 - It is possible to open user card by clicking on the username in list
-- The cser card has simple but working UI
+- The user card has simple but working UI
 - The users list and user card has a responsive UI
 - You are sure about the quality of your typescript code
 - You are sure about the project architecture
