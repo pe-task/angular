@@ -4,6 +4,8 @@ Think of you starting to work on a new project that has many issues and bad code
 Please investigate the project, follow the steps below and improve the code accordingly.
 You have **2 hours maximum** to complete the tasks.
 
+*Note: This Angular project requires Node.js version 10.x or later.*
+
 1. Check the Angular project provided to you. The project is a simple user management system. It has 2 views: Users List and User Card. The card can be opened from List, where it fetches data from a remote API. The users list has pagination and every page fetches data from this API.
 2. Some implementations in the project work correct, some - not. In a few words: you should make this project to work **correct**.
 
