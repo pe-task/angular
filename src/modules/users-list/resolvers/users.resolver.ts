@@ -12,5 +12,4 @@ export class UsersResolver implements Resolve<any> {
     const page: number = route.queryParams['page'] || 1;
     return this.apiService.fetchUsers(page);
   }
-
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { UserInterface } from '../../../../interfaces';
-import { ApiService } from '../../../core/services';
+import {Component, OnInit} from '@angular/core';
+import {PageEvent} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserInterface} from '../../../../interfaces';
+import {PaginationInterface} from '../../../../interfaces/pagination.interface';
+import {ApiService} from '../../../core/services';
 
 @Component({
   selector: 'app-users-list',
@@ -12,36 +12,35 @@ import { ApiService } from '../../../core/services';
 })
 export class UsersListComponent implements OnInit {
 
-  displayedColumns = ['first_name', 'last_name', 'email'];
+  displayedColumns = ['first_name', 'last_name', 'email', 'operations'];
   userList: any[] = [];
-  pagesCount: number;
+  totalPages: number;
+  perPage: number;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private apiService: ApiService) {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.pipe(
-      map(data => data.users)
-    )
-      .subscribe((users: UserInterface[]) => {
-        this.userList = users;
-      });
-
-    this.activatedRoute.data.pipe(
-      map(data => data.paginationInfo)
-    )
-      .subscribe(paginationInfo => {
-        this.pagesCount = paginationInfo.total;
-      })
+    this.activatedRoute.queryParams.subscribe(queryParams => {
+      const page = queryParams['page'];
+      this.apiService.fetchUsers(page).subscribe(data => this.fetchUserListSuccess(data));
+    });
   }
 
   pageChanged(event: PageEvent): void {
-    let page: number = event.pageIndex + 1;
-    this.router.navigate(['./'], { queryParams: { page } });
+    const page: number = event.pageIndex + 1;
+    this.router.navigate(['./'], {queryParams: {page}});
   }
 
   userSelected(user: UserInterface): void {
     this.router.navigate(['./user', user.id]);
+  }
+
+  private fetchUserListSuccess(paginationInfo: PaginationInterface<UserInterface>) {
+    this.userList = paginationInfo.data;
+    this.perPage = paginationInfo.per_page;
+    this.totalPages = paginationInfo.total;
   }
 }
