@@ -1,1 +1,16 @@
-<div>{{ user | json }}</div>
+<div class="logo" *ngIf="user.avatar">
+    <img src="{{ user.avatar }}" />
+</div>
+
+<div class="id" *ngIf="user.id">
+    ID: {{ user.id }}
+</div>
+
+<div class="name" *ngIf="user.first_name || user.last_name">
+    <span *ngIf="user.first_name">{{ user.first_name }}</span>
+    <span *ngIf="user.last_name">{{ user.last_name }}</span>
+</div>
+
+<div class="email" *ngIf="user.email">
+    {{ user.email }}
+</div>

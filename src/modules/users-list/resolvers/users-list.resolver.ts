@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { ApiService } from '../../core/services';
 
 @Injectable()
-export class UsersResolver implements Resolve<any> {
+export class UsersListResolver implements Resolve<any> {
 
   constructor(private apiService: ApiService) {
   }
@@ -12,5 +12,4 @@ export class UsersResolver implements Resolve<any> {
     const page: number = route.queryParams['page'] || 1;
     return this.apiService.fetchUsers(page);
   }
-
 }
