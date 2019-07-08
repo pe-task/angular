@@ -9,7 +9,6 @@ import { ApiService, PaginationApiService } from './services';
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders {
-    console.log('CoreModule created');
     return {
       ngModule: CoreModule,
       providers: [

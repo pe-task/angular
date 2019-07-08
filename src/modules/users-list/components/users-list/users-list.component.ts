@@ -3,7 +3,6 @@ import { PageEvent } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { UserInterface } from '../../../../interfaces';
-import { ApiService } from '../../../core/services';
 
 @Component({
   selector: 'app-users-list',
@@ -13,31 +12,25 @@ import { ApiService } from '../../../core/services';
 export class UsersListComponent implements OnInit {
 
   displayedColumns = ['first_name', 'last_name', 'email'];
-  userList: any[] = [];
+  userList: UserInterface[];
   pagesCount: number;
+  page: number;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.pipe(
-      map(data => data.users)
-    )
-      .subscribe((users: UserInterface[]) => {
-        this.userList = users;
-      });
-
-    this.activatedRoute.data.pipe(
-      map(data => data.paginationInfo)
-    )
-      .subscribe(paginationInfo => {
-        this.pagesCount = paginationInfo.total;
-      })
+    this.page = this.activatedRoute.snapshot.data['pageNum'];
+    this.activatedRoute.data.pipe(map(data => data.users))
+        .subscribe((users) => {
+          this.userList = users.data;
+          this.pagesCount = users.total;
+        });
   }
 
   pageChanged(event: PageEvent): void {
-    let page: number = event.pageIndex + 1;
+    const page: number = event.pageIndex + 1;
     this.router.navigate(['./'], { queryParams: { page } });
   }
 

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '../modules/core';
-import { UsersListModule } from '../modules/users-list';
+import { UsersListModule } from '../modules/users-list/users-list.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
