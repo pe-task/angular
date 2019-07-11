@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatPaginatorModule, MatTableModule } from '@angular/material';
-import { CoreModule } from '../core';
-import { UsersResolver } from './resolvers';
-import { PaginationResolver } from './resolvers/pagination.resolver';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import {
+  MatPaginatorModule,
+  MatTableModule,
+  MatToolbarModule
+} from "@angular/material";
+import { CoreModule } from "../core";
 
-import { UsersListRoutingModule } from './users-list-routing.module';
-import { UsersListComponent } from './components/users-list/users-list.component';
+import { UsersListRoutingModule } from "./users-list-routing.module";
+import { UsersListComponent } from "./components/users-list/users-list.component";
 
 @NgModule({
   declarations: [UsersListComponent],
@@ -15,11 +17,9 @@ import { UsersListComponent } from './components/users-list/users-list.component
     CoreModule.forRoot(),
     UsersListRoutingModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
   ],
-  providers: [
-    UsersResolver,
-    PaginationResolver
-  ]
+  providers: []
 })
-export class UsersListModule { }
+export class UsersListModule {}

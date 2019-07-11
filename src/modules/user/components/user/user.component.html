@@ -1,3 +1,8 @@
-<button (click)="back()">Back</button>
+<mat-toolbar color="primary">
+  <mat-icon (click)="back()" aria-hidden="false" aria-label="Go Back!"
+    >chevron_left</mat-icon
+  >
+  <span>Back</span>
+</mat-toolbar>
 
-<app-user-data [user]="user"></app-user-data>
+<app-user-card [user]="user"></app-user-card>

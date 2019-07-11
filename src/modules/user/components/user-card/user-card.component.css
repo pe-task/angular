@@ -1,0 +1,16 @@
+.user-card {
+  min-width: 250px;
+  max-width: 100%;
+  min-height: 200px;
+  padding: 20px;
+  margin: 20px auto;
+  text-align: center;
+  border: 1px solid lightgray;
+}
+
+img {
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  width: 128px;
+  height: 128px;
+}
