@@ -1,26 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { UserInterface } from '../../../interfaces';
-import { PaginationApiService } from './';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { UserInterface, HttpUserInterface } from "src/interfaces";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class ApiService {
+  private _baseUrl = "https://reqres.in/api";
+  constructor(private _httpClient: HttpClient) {}
 
-  constructor(private http: Http, private paginationApiService: PaginationApiService) {
-  }
-
-  fetchUsers(page): Observable<any> {
-    return this.http.get('https://reqres.in/api/users?page=' + page).pipe(map(response => response.json().data));
-  }
-
-  fetchPaginationInfo(): Observable<any> {
-    return this.paginationApiService.fetchPaginationInfo();
+  fetchUsers(page): Observable<HttpUserInterface> {
+    const path = `${this._baseUrl}/users?page=${page}`;
+    return this._httpClient.get<HttpUserInterface>(path);
   }
 
   fetchUserById(id: number): Observable<UserInterface> {
-    return this.http.get(`https://reqres.in/api/users/${id}`).pipe(map(response => response.json()));
+    const path = `${this._baseUrl}/users/${id}`;
+    return this._httpClient.get<UserInterface>(path);
   }
-
 }
